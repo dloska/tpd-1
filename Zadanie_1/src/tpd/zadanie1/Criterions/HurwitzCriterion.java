@@ -10,12 +10,12 @@ import java.util.Scanner;
 /**
  * Created by Damian Deska on 2017-10-14.
  */
-public class HurwitzAbstractCriterion extends AbstractCriterion {
+public class HurwitzCriterion extends AbstractCriterion {
 
     Scanner scanner = new Scanner(System.in);
     private float precautionaryFactor = 2.0f;
 
-    public HurwitzAbstractCriterion() {
+    public HurwitzCriterion() {
         criterionName = "Hurwicza";
     }
 

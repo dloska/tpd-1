@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * Created by Damian Deska on 2017-10-14.
  */
-public class WaldAbstractCriterion extends AbstractCriterion {
+public class WaldCriterion extends AbstractCriterion {
 
-    public WaldAbstractCriterion() {
+    public WaldCriterion() {
         criterionName = "Walda";
     }
 

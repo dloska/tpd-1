@@ -10,14 +10,13 @@ import java.util.Scanner;
 /**
  * Created by Damian Deska on 2017-10-14.
  */
-public class BayesLaplaceAbstractCriterion extends AbstractCriterion {
+public class BayesLaplaceCriterion extends AbstractCriterion {
 
     private static Scanner scanner = new Scanner(System.in);
     private int choosenFactorType;
     private int fractionsNumber = 1;
-    private List<Fraction> fractionsList = new ArrayList<>();
 
-    public BayesLaplaceAbstractCriterion() {
+    public BayesLaplaceCriterion() {
         criterionName = "Bayesa-Laplace'a";
     }
 
@@ -28,6 +27,7 @@ public class BayesLaplaceAbstractCriterion extends AbstractCriterion {
         List<Float> averageWinsList = new ArrayList<>();
         fractionsNumber = decisionsList.get(0).getDecisionStates().size();
         boolean correctChoosenFactorTypeFlag = false;
+        List<Fraction> fractionsList = new ArrayList<>();
 
         while(!correctChoosenFactorTypeFlag) {
             System.out.println("Wybierz rodzaj prawdopodobieństwa:\n1)Wszystkie stany jednakowo prawdopodobne" +
@@ -48,7 +48,7 @@ public class BayesLaplaceAbstractCriterion extends AbstractCriterion {
                 averageWinsList.clear();
                 averageWin = 0.0f;
 
-                getAllFactors();
+                fractionsList = getAllFactors();
 
                 for(DecisionModel decision : decisionsList){
                     for(int i = 0; i < decision.getDecisionStates().size(); i++) {
@@ -72,30 +72,33 @@ public class BayesLaplaceAbstractCriterion extends AbstractCriterion {
         return sum;
     }
 
-    private void getAllFactors() {
+    private List<Fraction> getAllFactors() {
+        List<Fraction> fractions = new ArrayList<>();
         boolean fractionsCorrectFlag = false;
+        Fraction fraction;
         while(!fractionsCorrectFlag) {
-            Fraction fraction = new Fraction();
             for(int i = 0; i < fractionsNumber; i++) {
+                fraction = new Fraction();
                 System.out.println("Podaj licznik dla " + (i + 1) + ". współczynnika: ");
                 fraction.setNumerator(scanner.nextInt());
                 System.out.println("Podaj mianownik dla " + (i + 1) + ". współczynnika: ");
                 fraction.setDenominator(scanner.nextInt());
-                fractionsList.add(fraction);
+                fractions.add(fraction);
             }
 
-            if(countFractionsSum()) {
+            if(countFractionsSum(fractions)) {
                 fractionsCorrectFlag = true;
             } else {
                 System.out.println("Niepoprawne wartości współczynników - ich suma musi wynosić 1. Spróbuj jeszcze raz.\n");
             }
         }
+        return fractions;
     }
 
-    private boolean countFractionsSum() {
+    private boolean countFractionsSum(List<Fraction> fractions) {
         float fractionsSum = 0.0f;
-        for(Fraction fraction : fractionsList) {
-            fractionsSum += (fraction.getNumerator() / fraction.getDenominator());
+        for(Fraction fraction : fractions) {
+            fractionsSum += fraction.getNumerator() / fraction.getDenominator();
         }
 
         return fractionsSum == 1.0f;

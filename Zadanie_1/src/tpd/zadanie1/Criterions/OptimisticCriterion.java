@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * Created by Damian Deska on 2017-10-14.
  */
-public class OptimisticAbstractCriterion extends AbstractCriterion {
+public class OptimisticCriterion extends AbstractCriterion {
 
-    public OptimisticAbstractCriterion() {
+    public OptimisticCriterion() {
         criterionName = "optymistycznym";
     }
 

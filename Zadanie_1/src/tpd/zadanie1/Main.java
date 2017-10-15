@@ -27,22 +27,22 @@ public class Main {
             AbstractCriterion criterion = null;
             switch(choosenCriterion) {
                 case 1:
-                    criterion = new WaldAbstractCriterion();
+                    criterion = new WaldCriterion();
                     break;
 
                 case 2:
-                    criterion = new OptimisticAbstractCriterion();
+                    criterion = new OptimisticCriterion();
                     break;
 
                 case 3:
-                    criterion = new HurwitzAbstractCriterion();
+                    criterion = new HurwitzCriterion();
                     break;
                 case 4:
-                    criterion = new BayesLaplaceAbstractCriterion();
+                    criterion = new BayesLaplaceCriterion();
                     break;
 
                 case 5:
-                    criterion = new SavageAbstractCriterion();
+                    criterion = new SavageCriterion();
                     break;
 
                 case 0:

@@ -8,14 +8,14 @@ import java.util.List;
 /**
  * Created by Damian Deska on 2017-10-14.
  */
-public class SavageAbstractCriterion extends AbstractCriterion {
+public class SavageCriterion extends AbstractCriterion {
 
     List<Float> maxRelativeLoseFactorsList = new ArrayList<>();
     List<DecisionModel> decisionsList = new ArrayList<>();
     List<Float> maxLosesList = new ArrayList<>();
     List<Integer> minLoseIndexList = new ArrayList<>();
 
-    public SavageAbstractCriterion() {
+    public SavageCriterion() {
         criterionName = "Savage'a";
     }
 
